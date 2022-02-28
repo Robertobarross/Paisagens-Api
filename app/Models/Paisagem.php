@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Paisagem extends Model
 {
     use HasFactory;
+
+    protected $fillable = [ // Acrescentei
+        'paisagem',
+        'imagem',
+        'nome',
+        'país',
+        'cidade',
+    ];
+
 }
