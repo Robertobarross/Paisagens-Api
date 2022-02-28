@@ -19,6 +19,7 @@ return new class extends Migration
             $table->file('imagem');
             $table->string('nome');
             $table->string('país');
+            $table->string('cidade');
             $table->timestamps();
         });
     }
