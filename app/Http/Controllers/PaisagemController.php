@@ -46,8 +46,17 @@ class PaisagemController extends Controller
 
     /* ------------------------------- */
 
-    public function destroy($id)
+    public function destroy($id) // Exclui um registro pelo id
     {
-        //
+        return Paisagem::destroy($id);
     }
+
+    /* ------------------------------- */
+
+    public function search($paisagem) // Traz a consulta pelo campo paisagem
+    {
+        return Paisagem::where('paisagem', 'like', '%'.$paisagem.'%')->get();
+
+    }
+
 }
