@@ -8,77 +8,44 @@ use App\Models\Paisagem; // Acrescentei
 
 class PaisagemController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function index() // Rota principal onde vai aparecer os dados da API
     {
         return Paisagem::all();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    /* ------------------------------- */
+
+    public function store(Request $request) // Insere os dados da API no BD
     {
-        //
+        $request->validate([
+            'paisagem' => 'required',
+            'imagem' => 'required',
+            'nome' => 'required',
+            'país' => 'required',
+            'cidade' => 'required',
+        ]);
+
+        return Paisagem::create($request->all());
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    /* ------------------------------- */
+
+    public function show($id) // Retorna um registro pelo $id
     {
-        //
+        return Paisagem::findOrfail($id);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    /* ------------------------------- */
+
+    public function update(Request $request, $id) // Para editar um registro pelo $id
     {
-        //
+        $paisagem = Paisagem::findOrfail($id);
+        $paisagem->update($request->all());
+        return $paisagem;
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+    /* ------------------------------- */
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         //
