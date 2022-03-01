@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('paisagems', function (Blueprint $table) {
             $table->id();
             $table->string('paisagem');
-            $table->file('imagem');
+            $table->string('imagem');
             $table->string('nome');
             $table->string('país');
             $table->string('cidade');
