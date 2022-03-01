@@ -11,3 +11,7 @@ Route::post('/paisagens', [PaisagemController::class, 'store']); // Insere os da
 Route::get('/paisagens/{id}', [PaisagemController::class, 'show']); // Retorna um registro pelo $id
 
 Route::put('paisagens/{id}', [PaisagemController::class, 'update']); // Para editar um registro pelo $id
+
+Route::delete('paisagens/{id}', [PaisagemController::class, 'destroy']); // Exclui um registro pelo id
+
+Route::get('/paisagens/search/{paisagem}', [PaisagemController::class, 'search']); // Traz a consulta pelo campo paisagem
